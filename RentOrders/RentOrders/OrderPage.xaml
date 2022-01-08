@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentOrders.OrderPage">
+    <ContentPage.Content xmlns:local="clr-namespace:RentOrders">
+        <StackLayout Margin="20">
+            <Label Text="First Name:"/>
+            <Editor Placeholder="FirstName"
+                Text="{Binding FirstName}"
+                HeightRequest="50" >
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Label Text="Last Name:"/>
+            <Editor Placeholder="LastName"
+                Text="{Binding LastName}"
+                HeightRequest="50" >
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Label Text="Phone Number:"/>
+            <Editor x:Name="PhEntry" Placeholder="Phone Number"
+                Text="{Binding PhNumber}"
+                HeightRequest="50" >
+               <!-- <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors> -->
+            </Editor>
+            <Label x:Name="ErrorLabel" TextColor="red"/>
+            <Button x:Name="ButtonClick" Text="Specify vehicle details" Clicked="OnChooseButtonClicked"/>
+            <Label x:Name="CarError" TextColor="red"/>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Text="Save"
+                Clicked="OnSaveButtonClicked"
+                        BackgroundColor="Green"/>
+                <Button Grid.Column="1"
+                 Text="Delete"
+                Clicked="OnDeleteButtonClicked"
+                        BackgroundColor="Red"/>
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView"
+                    Margin="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Model}" 
+                                      Detail="{Binding Color}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

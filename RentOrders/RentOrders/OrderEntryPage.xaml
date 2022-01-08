@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentOrders.OrderEntryPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Reserve RentVehicle"
+        Clicked="OnOrderListAddedClicked" />
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="listView"
+                Margin="20"
+                ItemSelected="OnListViewItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Title}"
+                                TextColor="#f35e20"
+                                 FontSize="Large" />
+                            <Label Text="{Binding Date}"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#503026" />
+                        </StackLayout>
+                    </StackLayout>
+                    </ViewCell>
+
+            </DataTemplate>
+            
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
